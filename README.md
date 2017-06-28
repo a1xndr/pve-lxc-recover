@@ -1,7 +1,7 @@
 ### pve configuration recovery from lxc configs and raw disk images
 
 ## how to use
-pvelxcrecover.sh /path/containing/raw/disk/images
+`pvelxcrecover.sh /path/containing/raw/disk/images /path/containing/lxc/configs/`
 
 ## what works
  * detecting raw image size
@@ -17,3 +17,5 @@ pvelxcrecover.sh /path/containing/raw/disk/images
  * hostname detection from raw disk image
  * mac detection 
 
+## example
+`./pvelxcrecover.sh /var/vz/images/ /var/lib/lxc/`
