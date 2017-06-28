@@ -1,0 +1,10 @@
+arch: $lxconf_arch
+cores: 1
+cpuunits: $lxconf_cpushares
+memory: $lxconf_memory
+hostname: $lxconf_hostname
+net0: name=eth0,bridge=vmbr0,type=veth
+ostype: debian
+rootfs: local:$ctid/vm-$ctid-disk-1.raw,size=$size
+swap: 512
+mp0:/silo/array1/,mp=/media/array1

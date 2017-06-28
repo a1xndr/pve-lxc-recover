@@ -1,8 +1,8 @@
 #!/bin/bash
 # qemu-img info /silo/array1/Backup/2017-06-28-bos-hv02/vz/images/101/vm-101-disk-1.raw
 
-imgdir="/silo/array1/Backup/2017-06-28-bos-hv02/vz/images/"
-lxcdir="/var/lib/lxc/"
+imgdir=$1
+lxcdir=$2
 
 for img in $(find $imgdir -iname "vm-*.raw"); do
 	imgname=$(basename $img)
@@ -34,9 +34,12 @@ for img in $(find $imgdir -iname "vm-*.raw"); do
 	export lxconf_memory
 	export size
 	export ctid
+	if [ ! -f /var/lib/vz/images/$ctid/vm-$ctid-disk-1.raw ]; then
+		mkdir /var/lib/vz/images/$ctid/
+		cp $img /var/lib/vz/images/$ctid/vm-$ctid-disk-1.raw
+	fi;
 	if [ ! -f /etc/pve/lxc/$ctid.conf ]; then
 		envsubst < pve-ct.conf.template > /etc/pve/lxc/$ctid.conf
 		echo ""
 	fi;
-
 done;
