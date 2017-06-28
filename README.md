@@ -1,9 +1,19 @@
-### PVE LXC Recovery
+### pve configuration recovery from lxc configs and raw disk images
 
-## What works
- * Detecting raw image size
- * Re-assembling most PVE ct config variables from LXC configs. These include
+## how to use
+pvelxcrecover.sh /path/containing/raw/disk/images
+
+## what works
+ * detecting raw image size
+ * re-assembling most pve ct config variables from lxc configs. these include
    hostname, cpu units, memory, arch
 
-## What doesnt work
- * Automatically re-creating mount points defined within PVE
+## what doesnt work
+ * automatically re-creating mount points defined within pve
+ * restoring the "autostart" status of containers
+
+## what can work but doesnt work
+ * ostype detection
+ * hostname detection from raw disk image
+ * mac detection 
+
