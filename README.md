@@ -18,4 +18,37 @@
  * mac detection 
 
 ## example
+make sure to back up any lxc configs and raw images
+
 `./pvelxcrecover.sh /var/vz/images/ /var/lib/lxc/`
+
+example output
+```
+Found disk image vm-106-disk-1.raw - Size: 24G
+Found lxconf at /tmp/tmpmnt/var/lib/lxc/106/config  Extracting container properties...
+        arch: amd64
+        hostname: bos-sql01
+        memory: 1024
+        cpu units: 1024
+
+Found disk image vm-121-disk-1.raw - Size: 8.0G
+Found lxconf at /tmp/tmpmnt/var/lib/lxc/121/config  Extracting container properties...
+        arch: amd64
+        hostname: bos-nfs01
+        memory: 512
+        cpu units: 1024
+
+Found disk image vm-100-disk-1.raw - Size: 8.0G
+Found lxconf at /tmp/tmpmnt/var/lib/lxc/100/config  Extracting container properties...
+        arch: amd64
+        hostname: bos-dns01
+        memory: 512
+        cpu units: 1024
+
+Found disk image vm-103-disk-1.raw - Size: 12G
+Found lxconf at /tmp/tmpmnt/var/lib/lxc/103/config  Extracting container properties...
+        arch: amd64
+        hostname: bos-rtr01
+        memory: 12288
+        cpu units: 1024
+```
