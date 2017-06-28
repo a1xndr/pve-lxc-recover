@@ -17,11 +17,26 @@ for img in $(find $imgdir -iname "vm-*.raw"); do
 		lxconf_hostname=$(grep "lxc.utsname" $lxconf | awk '{ print $NF }')
 		lxconf_memory=$(grep "lxc.cgroup.memory.limit_in_bytes" $lxconf | awk '{ print $NF }' | awk '{ byte =$1 /1024/1024 ; print byte }')
 		lxconf_cpushares=$(grep "lxc.cgroup.cpu.shares" $lxconf | awk '{ print $NF }')
+		lxconf_cpus=$(grep "lxc.cgroup.cpuset.cpus" $lxconf | awk '{ print $NF }')
 		echo -e "\tarch: $lxconf_arch"
 		echo -e "\thostname: $lxconf_hostname"
 		echo -e "\tmemory: $lxconf_memory"
 		echo -e "\tcpu units: $lxconf_cpushares"
+	else
+		echo "Did not find lxconf - skipping"
+		echo ""
+		continue
 	fi;
-	echo ""
+
+	export lxconf_cpushares
+	export lxconf_arch
+	export lxconf_hostname
+	export lxconf_memory
+	export size
+	export ctid
+	if [ ! -f /etc/pve/lxc/$ctid.conf ]; then
+		envsubst < pve-ct.conf.template > /etc/pve/lxc/$ctid.conf
+		echo ""
+	fi;
 
 done;
