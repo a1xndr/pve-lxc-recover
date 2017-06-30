@@ -1,5 +1,9 @@
 ### pve configuration recovery from lxc configs and raw disk images
-
+## what for
+this should help in cases when LXC configurations are lost from Proxmox Virtual
+Environment. this can occur when a cluster node is incorrectly removed.
+Generally, while the configurations may be gone from pmxcfs, they can be
+recovered from the abstracted LXC configs and raw disk images. 
 ## how to use
 `pvelxcrecover.sh /path/containing/raw/disk/images /path/containing/lxc/configs/`
 
